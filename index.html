@@ -1,0 +1,99 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Car Price Prediction</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Car Price Prediction</h1>
+
+        <p>Enter the car details to predict its price.</p>
+
+        <form action="/predict" method="POST">
+
+            <label>Symboling</label>
+            <input type="number" name="symboling"
+                   step="1" value="0" required>
+
+            <label>Wheelbase</label>
+            <input type="number" name="wheelbase"
+                   step="any" required>
+
+            <label>Car Length</label>
+            <input type="number" name="carlength"
+                   step="any" required>
+
+            <label>Car Width</label>
+            <input type="number" name="carwidth"
+                   step="any" required>
+
+            <label>Car Height</label>
+            <input type="number" name="carheight"
+                   step="any" required>
+
+            <label>Curb Weight</label>
+            <input type="number" name="curbweight"
+                   step="any" required>
+
+            <label>Engine Size</label>
+            <input type="number" name="enginesize"
+                   step="any" required>
+
+            <label>Bore Ratio</label>
+            <input type="number" name="boreratio"
+                   step="any" required>
+
+            <label>Stroke</label>
+            <input type="number" name="stroke"
+                   step="any" required>
+
+            <label>Compression Ratio</label>
+            <input type="number" name="compressionratio"
+                   step="any" required>
+
+            <label>Horsepower</label>
+            <input type="number" name="horsepower"
+                   step="any" required>
+
+            <label>Peak RPM</label>
+            <input type="number" name="peakrpm"
+                   step="any" required>
+
+            <label>City MPG</label>
+            <input type="number" name="citympg"
+                   step="any" required>
+
+            <label>Highway MPG</label>
+            <input type="number" name="highwaympg"
+                   step="any" required>
+
+            <button type="submit">Predict Price</button>
+
+        </form>
+
+        {% if prediction is defined %}
+            <div class="result">
+                <h2>Predicted Car Price</h2>
+                <p>${{ "%.2f"|format(prediction) }}</p>
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="error">
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
